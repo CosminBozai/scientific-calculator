@@ -24,7 +24,7 @@ function MainKeyboard({ handleInput, handleDelete, inputValue }: clickProps) {
         <button onClick={() => handleInput("tan(")}>tan</button>
         <button onClick={() => handleInput("(")}>{"("}</button>
         <button onClick={() => handleInput(")")}>{")"}</button>
-        <button>pla</button>
+        <button onClick={() => handleInput("!")}>!</button>
       </div>
       <div id="center">
         <button onClick={() => handleInput("7")}>7</button>

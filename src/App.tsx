@@ -41,7 +41,7 @@ function App() {
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Backspace") {
       handleDelete();
-    } else if (e.key.match(/^[0-9a-z+\-*/().^]$/)) {
+    } else if (e.key.match(/^[0-9a-z+\-*/().^!]$/)) {
       handleInput(e.key);
     }
   };
