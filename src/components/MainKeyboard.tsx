@@ -1,15 +1,19 @@
 import "../styles/MainKeyboard.scss";
+import { exponentiationByTwo } from "../utils/functionHandlers";
 
 type clickProps = {
   handleInput: (value: string) => void;
   handleDelete: () => void;
+  inputValue: string;
 };
 
-function MainKeyboard({ handleInput, handleDelete }: clickProps) {
+function MainKeyboard({ handleInput, handleDelete, inputValue }: clickProps) {
   return (
     <div id="main-keyboard">
       <div id="left">
-        <button>pla</button>
+        <button onClick={() => handleInput(exponentiationByTwo(inputValue))}>
+          a^2
+        </button>
         <button>pla</button>
         <button>pla</button>
         <button>pla</button>

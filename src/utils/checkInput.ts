@@ -8,6 +8,8 @@ export default function checkInput(value: string): string {
       return "Multiply and division operators can't be the first element";
     case /^\s*!/.test(value):
       return "Factorial operators can't be the first element";
+    case /^\^/.test(value):
+      return "You need a value before the exponent";
     case value.length === 0:
       return "";
     default:

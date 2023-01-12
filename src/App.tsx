@@ -41,7 +41,7 @@ function App() {
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Backspace") {
       handleDelete();
-    } else if (e.key.match(/^[0-9+\-*/().]$/)) {
+    } else if (e.key.match(/^[0-9+\-*/().^]$/)) {
       handleInput(e.key);
     }
   };
@@ -53,7 +53,11 @@ function App() {
       </div>
       <div>result: {result}</div>
       <section id="keyboard-section">
-        <MainKeyboard handleInput={handleInput} handleDelete={handleDelete} />
+        <MainKeyboard
+          handleInput={handleInput}
+          handleDelete={handleDelete}
+          inputValue={inputValue}
+        />
       </section>
     </>
   );
