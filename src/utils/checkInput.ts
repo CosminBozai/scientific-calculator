@@ -10,6 +10,12 @@ export default function checkInput(value: string): string {
       return "You need a value before the exponent sign";
     case /^(?!.*\))abs\(\d*|\s(?!.*\))abs\(\d*/.test(value):
       return "Function abs require arguments between paranthesis. For example: abs(-2)";
+    case /^(?!.*\))sin\(\d*|\s(?!.*\))sin\(\d*/.test(value):
+      return "Function sin require arguments between paranthesis. For example: sin(60)";
+    case /^(?!.*\))cos\(\d*|\s(?!.*\))cos\(\d*/.test(value):
+      return "Function cos require arguments between paranthesis. For example: cos(45)";
+    case /^(?!.*\))tan\(\d*|\s(?!.*\))tan\(\d*/.test(value):
+      return "Function tan require arguments between paranthesis. For example: tan(90)";
     case value.length === 0:
       return "";
     default:
