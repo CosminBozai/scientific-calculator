@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import MainKeyboard from "./components/MainKeyboard";
 import checkInput from "./utils/checkInput";
 import "./styles/App.scss";
+import { MathJaxContext } from "better-react-mathjax";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
@@ -47,7 +48,7 @@ function App() {
   };
 
   return (
-    <>
+    <MathJaxContext>
       <div onKeyDown={handleKeyPress} tabIndex={0}>
         <input value={inputValue} readOnly />
       </div>
@@ -59,7 +60,7 @@ function App() {
           inputValue={inputValue}
         />
       </section>
-    </>
+    </MathJaxContext>
   );
 }
 
