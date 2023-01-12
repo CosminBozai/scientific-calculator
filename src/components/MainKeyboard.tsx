@@ -14,16 +14,16 @@ function MainKeyboard({ handleInput, handleDelete, inputValue }: clickProps) {
         <button onClick={() => handleInput(exponentiationByTwo(inputValue))}>
           a^2
         </button>
+        <button onClick={() => handleInput("^")}>a^b</button>
+        <button onClick={() => handleInput("abs(")}>abs</button>
         <button>pla</button>
         <button>pla</button>
         <button>pla</button>
         <button>pla</button>
         <button>pla</button>
         <button>pla</button>
-        <button>pla</button>
-        <button>pla</button>
-        <button>pla</button>
-        <button>pla</button>
+        <button onClick={() => handleInput("(")}>{"("}</button>
+        <button onClick={() => handleInput(")")}>{")"}</button>
         <button>pla</button>
       </div>
       <div id="center">
