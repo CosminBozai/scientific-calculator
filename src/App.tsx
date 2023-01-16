@@ -1,7 +1,7 @@
 import * as math from "mathjs";
 import React, { useEffect, useState } from "react";
 import MainKeyboard from "./components/MainKeyboard";
-import checkInput from "./utils/checkInput";
+import { checkValidity, checkIfFunction } from "./utils/checks";
 import "./styles/App.scss";
 import { MathJax, MathJaxContext } from "better-react-mathjax";
 
@@ -22,7 +22,6 @@ const mathjaxConfig = {
 
 function App() {
   const [inputValue, setInputValue] = useState("");
-  const [displayValue, setDisplayValue] = useState("");
   const [result, setResult] = useState("");
 
   useEffect(() => {
@@ -30,19 +29,21 @@ function App() {
   }, [inputValue]);
 
   const handleInput = (value: string) => {
-    setInputValue(inputValue + value);
-    setDisplayValue(displayValue + value);
+    if (checkIfFunction(inputValue)) {
+      setInputValue(inputValue.slice(0, -1) + value + ")");
+    } else {
+      setInputValue(inputValue + value);
+    }
   };
 
   const handleDelete = () => {
     setInputValue(inputValue.slice(0, -1));
-    setDisplayValue(inputValue.slice(0, -1));
   };
 
   const handleEval = () => {
     try {
       let evaluationResult: string;
-      const isValidInput: string = checkInput(inputValue);
+      const isValidInput: string = checkValidity(inputValue);
       if (isValidInput === "valid") {
         const evaluated = math.evaluate(inputValue);
         Number.isInteger(evaluated)
@@ -60,6 +61,8 @@ function App() {
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Backspace") {
       handleDelete();
+    } else if (e.key === " ") {
+      handleInput(" ");
     } else if (e.key.match(/^[0-9a-z+\-*/().^!]$/)) {
       handleInput(e.key);
     }
@@ -68,7 +71,7 @@ function App() {
   return (
     <MathJaxContext version={3} config={mathjaxConfig}>
       <div className="input-field" onKeyDown={handleKeyPress} tabIndex={0}>
-        <MathJax>{displayValue}</MathJax>
+        <MathJax>{inputValue}</MathJax>
       </div>
       <div>result: {result}</div>
       <section id="keyboard-section">
@@ -76,7 +79,6 @@ function App() {
           handleInput={handleInput}
           handleDelete={handleDelete}
           inputValue={inputValue}
-          setDisplayValue={setDisplayValue}
         />
       </section>
     </MathJaxContext>
