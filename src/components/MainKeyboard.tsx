@@ -1,4 +1,5 @@
 import MathJax from "better-react-mathjax/MathJax";
+import { Dispatch, SetStateAction } from "react";
 import "../styles/MainKeyboard.scss";
 import { exponentiationByTwo } from "../utils/functionHandlers";
 
@@ -6,9 +7,15 @@ type clickProps = {
   handleInput: (value: string) => void;
   handleDelete: () => void;
   inputValue: string;
+  setDisplayValue: Dispatch<SetStateAction<string>>;
 };
 
-function MainKeyboard({ handleInput, handleDelete, inputValue }: clickProps) {
+function MainKeyboard({
+  handleInput,
+  handleDelete,
+  inputValue,
+  setDisplayValue,
+}: clickProps) {
   return (
     <div id="main-keyboard">
       <div id="left">
@@ -19,7 +26,14 @@ function MainKeyboard({ handleInput, handleDelete, inputValue }: clickProps) {
         <button onClick={() => handleInput("abs(")}>abs</button>
         <button>pla</button>
         <button>pla</button>
-        <button onClick={() => handleInput("pi")}>pi</button>
+        <button
+          onClick={() => {
+            handleInput("pi");
+            setDisplayValue(`\\(\\pi\\)`);
+          }}
+        >
+          <MathJax>{`\\(\\pi\\)`}</MathJax>
+        </button>
         <button onClick={() => handleInput("sin(")}>sin</button>
         <button onClick={() => handleInput("cos(")}>cos</button>
         <button onClick={() => handleInput("tan(")}>tan</button>

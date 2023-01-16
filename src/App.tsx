@@ -3,10 +3,26 @@ import React, { useEffect, useState } from "react";
 import MainKeyboard from "./components/MainKeyboard";
 import checkInput from "./utils/checkInput";
 import "./styles/App.scss";
-import { MathJaxContext } from "better-react-mathjax";
+import { MathJax, MathJaxContext } from "better-react-mathjax";
+
+const mathjaxConfig = {
+  loader: { load: ["[tex]/html"] },
+  tex: {
+    packages: { "[+]": ["html"] },
+    inlineMath: [
+      ["$", "$"],
+      ["\\(", "\\)"],
+    ],
+    displayMath: [
+      ["$$", "$$"],
+      ["\\[", "\\]"],
+    ],
+  },
+};
 
 function App() {
   const [inputValue, setInputValue] = useState("");
+  const [displayValue, setDisplayValue] = useState("");
   const [result, setResult] = useState("");
 
   useEffect(() => {
@@ -15,10 +31,12 @@ function App() {
 
   const handleInput = (value: string) => {
     setInputValue(inputValue + value);
+    setDisplayValue(displayValue + value);
   };
 
   const handleDelete = () => {
     setInputValue(inputValue.slice(0, -1));
+    setDisplayValue(inputValue.slice(0, -1));
   };
 
   const handleEval = () => {
@@ -48,9 +66,9 @@ function App() {
   };
 
   return (
-    <MathJaxContext>
-      <div onKeyDown={handleKeyPress} tabIndex={0}>
-        <input value={inputValue} readOnly />
+    <MathJaxContext version={3} config={mathjaxConfig}>
+      <div className="input-field" onKeyDown={handleKeyPress} tabIndex={0}>
+        <MathJax>{displayValue}</MathJax>
       </div>
       <div>result: {result}</div>
       <section id="keyboard-section">
@@ -58,6 +76,7 @@ function App() {
           handleInput={handleInput}
           handleDelete={handleDelete}
           inputValue={inputValue}
+          setDisplayValue={setDisplayValue}
         />
       </section>
     </MathJaxContext>

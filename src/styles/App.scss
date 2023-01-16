@@ -10,3 +10,12 @@
     border-color: blue;
   }
 }
+
+.input-field {
+  border: 1px solid black;
+  width: 200px;
+  height: 1.5rem;
+  &:focus {
+    border: 2px solid black;
+  }
+}
