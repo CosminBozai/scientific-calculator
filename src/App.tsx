@@ -68,6 +68,10 @@ function App() {
     }
   };
 
+  const handleClear = () => {
+    setInputValue("");
+  };
+
   return (
     <MathJaxContext version={3} config={mathjaxConfig}>
       <div className="input-field" onKeyDown={handleKeyPress} tabIndex={0}>
@@ -78,6 +82,7 @@ function App() {
         <MainKeyboard
           handleInput={handleInput}
           handleDelete={handleDelete}
+          handleClear={handleClear}
           inputValue={inputValue}
         />
       </section>

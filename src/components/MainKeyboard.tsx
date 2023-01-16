@@ -5,17 +5,25 @@ import { exponentiationByTwo } from "../utils/functionHandlers";
 type clickProps = {
   handleInput: (value: string) => void;
   handleDelete: () => void;
+  handleClear: () => void;
   inputValue: string;
 };
 
-function MainKeyboard({ handleInput, handleDelete, inputValue }: clickProps) {
+function MainKeyboard({
+  handleInput,
+  handleDelete,
+  inputValue,
+  handleClear,
+}: clickProps) {
   return (
     <div id="main-keyboard">
       <div id="left">
         <button onClick={() => handleInput(exponentiationByTwo(inputValue))}>
-          a^2
+          <MathJax>{`\\(\a^{2}\\)`}</MathJax>
         </button>
-        <button onClick={() => handleInput("^")}>a^b</button>
+        <button onClick={() => handleInput("^")}>
+          <MathJax>{`\\(\a^{b}\\)`}</MathJax>
+        </button>
         <button onClick={() => handleInput("abs()")}>abs</button>
         <button onClick={() => handleInput("sqrt()")}>
           <MathJax>{`\\(\\sqrt{}\\)`}</MathJax>
@@ -46,11 +54,11 @@ function MainKeyboard({ handleInput, handleDelete, inputValue }: clickProps) {
         <button onClick={() => handleInput("-")}>-</button>
         <button onClick={() => handleInput("0")}>0</button>
         <button onClick={() => handleInput(".")}>.</button>
-        <button>ans</button>
+        <button onClick={() => handleInput("%")}>%</button>
         <button onClick={() => handleInput("+")}>+</button>
       </div>
       <div id="right">
-        <button>bbb</button>
+        <button onClick={handleClear}>clear</button>
         <button>bbb</button>
         <button>bbb</button>
         <button>bbb</button>
