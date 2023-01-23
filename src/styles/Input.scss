@@ -5,12 +5,12 @@
   margin: 1rem;
 }
 
-#input {
+.input {
   border: 1px solid black;
   width: 100%;
   outline: none;
   padding: 1rem 0.75rem;
-  &:focus {
+  &.focus {
     border: 1px solid blue;
     box-shadow: inset 0px 0px 0px 0.5px blue;
     .cursor {

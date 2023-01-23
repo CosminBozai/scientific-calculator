@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   addCharAtCursor,
   deleteCharAtCursor,
@@ -15,9 +15,12 @@ import { useAtom, atom } from "jotai";
 
 export const valuesArrAtom = atom<string[]>(["cursor"]);
 
-function Input() {
-  const [valuesArr, setValuesArr] = useAtom(valuesArrAtom);
+interface Focus {
+  hasFocus: boolean;
+}
 
+function Input({ hasFocus }: Focus) {
+  const [valuesArr, setValuesArr] = useAtom(valuesArrAtom);
   // makes cursor blink
   const [blink, setBlink] = useState("");
   useEffect(() => {
@@ -74,7 +77,10 @@ function Input() {
 
   return (
     <div className="input-wrapper">
-      <div onKeyDown={handleKeyPress} id="input" tabIndex={0}>
+      <div
+        onKeyDown={handleKeyPress}
+        className={`input ${hasFocus ? "focus" : ""}`}
+      >
         {inputElements}
       </div>
       <Result valuesArr={valuesArr} />
