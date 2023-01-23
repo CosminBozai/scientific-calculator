@@ -1,9 +1,15 @@
+.input-wrapper {
+  position: relative;
+  display: flex;
+  width: 600px;
+  margin: 1rem;
+}
+
 #input {
   border: 1px solid black;
-  width: 300px;
-  margin: 1rem;
+  width: 100%;
   outline: none;
-  padding: 0.5rem 0.75rem;
+  padding: 1rem 0.75rem;
   &:focus {
     border: 1px solid blue;
     box-shadow: inset 0px 0px 0px 0.5px blue;
@@ -17,6 +23,6 @@
 }
 
 .cursor {
-  border-right: 1px solid black;
+  border-right: 2px solid rgb(69, 69, 69);
   opacity: 0;
 }

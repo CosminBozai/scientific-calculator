@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import * as math from "mathjs";
 import {
   addCharAtCursor,
   deleteCharAtCursor,
@@ -7,6 +6,7 @@ import {
   moveCursorRight,
 } from "../utils/cursorControls";
 import "../styles/Input.scss";
+import Result from "./Result";
 
 function Input() {
   // makes cursor blink
@@ -34,25 +34,13 @@ function Input() {
     }
   });
 
-  useEffect(() => {
-    const filtered = valuesArr.filter(
-      (char) => char !== " " && char !== "cursor"
-    );
-    const toEvaluate = filtered.join("");
-    try {
-      const result = math.evaluate(toEvaluate);
-      console.log(result);
-    } catch (err) {
-      console.log(err);
-    }
-  }, [valuesArr]);
-
   const handleKeyPress = (e: React.KeyboardEvent) => {
     switch (e.key) {
       case "Backspace":
         if (valuesArr.indexOf("cursor") !== 0)
           setValuesArr(deleteCharAtCursor(valuesArr));
         break;
+      // FIXME: try finding a way to make moving the arrow faster
       case "ArrowRight":
         if (valuesArr.at(-1) !== "cursor")
           setValuesArr(moveCursorRight(valuesArr));
@@ -73,8 +61,11 @@ function Input() {
   };
 
   return (
-    <div onKeyDown={handleKeyPress} id="input" tabIndex={0}>
-      {inputElements}
+    <div className="input-wrapper">
+      <div onKeyDown={handleKeyPress} id="input" tabIndex={0}>
+        {inputElements}
+      </div>
+      <Result valuesArr={valuesArr} />
     </div>
   );
 }

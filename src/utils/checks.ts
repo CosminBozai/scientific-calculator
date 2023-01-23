@@ -1,4 +1,4 @@
-export function checkValidity(value: string): string {
+export function getCustomError(value: string): string {
   switch (true) {
     case /[0-9a-z\(\)]\s*[/*\-+]\s*$/.test(value):
       return "You need values on both sides of an operator";
@@ -10,17 +10,7 @@ export function checkValidity(value: string): string {
       return "You need a value before the exponent sign";
     case /abs\(\)|cos\(\)|sin\(\)|tan\(\)/.test(value):
       return "Functions require arguments. For example: abs(-2)";
-    case value.length === 0:
-      return "";
     default:
-      return "valid";
-  }
-}
-
-export function checkIfFunction(value: string): boolean {
-  if (value === " ") {
-    return false;
-  } else {
-    return /\w\(\d*\)/.test(value);
+      return "Could not evaluate expression";
   }
 }

@@ -2,6 +2,8 @@ import "./styles/App.scss";
 import { MathJaxContext } from "better-react-mathjax";
 import Input from "./components/Input";
 
+//TODO: Make the keyboard functional again
+
 const mathjaxConfig = {
   loader: { load: ["[tex]/html"] },
   tex: {
