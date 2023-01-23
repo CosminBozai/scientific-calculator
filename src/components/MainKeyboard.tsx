@@ -1,68 +1,106 @@
 import MathJax from "better-react-mathjax/MathJax";
 import "../styles/MainKeyboard.scss";
-import { exponentiationByTwo } from "../utils/functionHandlers";
+import { useAtom } from "jotai";
+import { valuesArrAtom } from "./Input";
+import {
+  addAbsFunc,
+  addCosFunc,
+  addOpenParanthesis,
+  addSinFunc,
+  addSqrtFunc,
+  addTanFunc,
+} from "../utils/specialCharsHandler";
+import { addCharAtCursor, deleteCharAtCursor } from "../utils/cursorControls";
 
-type clickProps = {
-  handleInput: (value: string) => void;
-  handleDelete: () => void;
-  handleClear: () => void;
-  inputValue: string;
-};
-
-function MainKeyboard({
-  handleInput,
-  handleDelete,
-  inputValue,
-  handleClear,
-}: clickProps) {
+function MainKeyboard() {
+  const [valuesArr, setValuesArr] = useAtom(valuesArrAtom);
   return (
     <div id="main-keyboard">
       <div id="left">
-        <button onClick={() => handleInput(exponentiationByTwo(inputValue))}>
+        <button>
           <MathJax>{`\\(\a^{2}\\)`}</MathJax>
         </button>
-        <button onClick={() => handleInput("^")}>
+        <button>
           <MathJax>{`\\(\a^{b}\\)`}</MathJax>
         </button>
-        <button onClick={() => handleInput("abs()")}>abs</button>
-        <button onClick={() => handleInput("sqrt()")}>
+        <button onClick={() => setValuesArr(addAbsFunc(valuesArr))}>abs</button>
+        <button onClick={() => setValuesArr(addSqrtFunc(valuesArr))}>
           <MathJax>{`\\(\\sqrt{}\\)`}</MathJax>
         </button>
         <button>pla</button>
-        <button onClick={() => handleInput("pi")}>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "pi"))}>
           <MathJax>{`\\(\\pi\\)`}</MathJax>
         </button>
-        <button onClick={() => handleInput("sin()")}>sin</button>
-        <button onClick={() => handleInput("cos()")}>cos</button>
-        <button onClick={() => handleInput("tan()")}>tan</button>
-        <button onClick={() => handleInput("(")}>{"("}</button>
-        <button onClick={() => handleInput(")")}>{")"}</button>
-        <button onClick={() => handleInput("!")}>!</button>
+        <button onClick={() => setValuesArr(addSinFunc(valuesArr))}>sin</button>
+        <button onClick={() => setValuesArr(addCosFunc(valuesArr))}>cos</button>
+        <button onClick={() => setValuesArr(addTanFunc(valuesArr))}>tan</button>
+        <button onClick={() => setValuesArr(addOpenParanthesis(valuesArr))}>
+          {"("}
+        </button>
+        <button>{")"}</button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "!"))}>
+          !
+        </button>
       </div>
       <div id="center">
-        <button onClick={() => handleInput("7")}>7</button>
-        <button onClick={() => handleInput("8")}>8</button>
-        <button onClick={() => handleInput("9")}>9</button>
-        <button onClick={() => handleInput("/")}>/</button>
-        <button onClick={() => handleInput("4")}>4</button>
-        <button onClick={() => handleInput("5")}>5</button>
-        <button onClick={() => handleInput("6")}>6</button>
-        <button onClick={() => handleInput("*")}>x</button>
-        <button onClick={() => handleInput("1")}>1</button>
-        <button onClick={() => handleInput("2")}>2</button>
-        <button onClick={() => handleInput("3")}>3</button>
-        <button onClick={() => handleInput("-")}>-</button>
-        <button onClick={() => handleInput("0")}>0</button>
-        <button onClick={() => handleInput(".")}>.</button>
-        <button onClick={() => handleInput("%")}>%</button>
-        <button onClick={() => handleInput("+")}>+</button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "7"))}>
+          7
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "8"))}>
+          8
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "9"))}>
+          9
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "/"))}>
+          /
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "4"))}>
+          4
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "5"))}>
+          5
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "6"))}>
+          6
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "*"))}>
+          x
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "1"))}>
+          1
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "2"))}>
+          2
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "3"))}>
+          3
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "-"))}>
+          -
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "0"))}>
+          0
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "."))}>
+          .
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "%"))}>
+          %
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "+"))}>
+          +
+        </button>
       </div>
       <div id="right">
-        <button onClick={handleClear}>clear</button>
         <button>bbb</button>
         <button>bbb</button>
         <button>bbb</button>
-        <button className="backspace" onClick={handleDelete}>
+        <button>bbb</button>
+        <button
+          className="backspace"
+          onClick={() => setValuesArr(deleteCharAtCursor(valuesArr))}
+        >
           back
         </button>
         <button className="enter">enter</button>

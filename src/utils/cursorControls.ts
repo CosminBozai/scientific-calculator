@@ -23,9 +23,10 @@ export function addCharAtCursor(arr: string[], char: string): string[] {
 }
 
 export function deleteCharAtCursor(arr: string[]): string[] {
-  arr = [
-    ...arr.slice(0, arr.indexOf("cursor") - 1),
-    ...arr.slice(arr.indexOf("cursor")),
-  ];
+  if (arr.indexOf("cursor") !== 0)
+    arr = [
+      ...arr.slice(0, arr.indexOf("cursor") - 1),
+      ...arr.slice(arr.indexOf("cursor")),
+    ];
   return arr;
 }

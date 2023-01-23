@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "better-react-mathjax": "^2.0.2",
+    "jotai": "^1.13.1",
     "mathjs": "^11.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

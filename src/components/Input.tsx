@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   addCharAtCursor,
   deleteCharAtCursor,
@@ -11,8 +11,13 @@ import {
   addClosingParanthesis,
   addOpenParanthesis,
 } from "../utils/specialCharsHandler";
+import { useAtom, atom } from "jotai";
+
+export const valuesArrAtom = atom<string[]>(["cursor"]);
 
 function Input() {
+  const [valuesArr, setValuesArr] = useAtom(valuesArrAtom);
+
   // makes cursor blink
   const [blink, setBlink] = useState("");
   useEffect(() => {
@@ -25,8 +30,6 @@ function Input() {
 
     return () => clearInterval(intervalId);
   }, []);
-
-  const [valuesArr, setValuesArr] = useState<string[]>(["cursor"]);
 
   const inputElements = valuesArr.map((char, i) => {
     if (char === " ") {
@@ -41,8 +44,7 @@ function Input() {
   const handleKeyPress = (e: React.KeyboardEvent) => {
     switch (e.key) {
       case "Backspace":
-        if (valuesArr.indexOf("cursor") !== 0)
-          setValuesArr(deleteCharAtCursor(valuesArr));
+        setValuesArr(deleteCharAtCursor(valuesArr));
         break;
       // FIXME: try finding a way to make moving the arrow faster
       case "ArrowRight":
@@ -58,10 +60,10 @@ function Input() {
         setValuesArr(moveCursorRight(newState));
         break;
       case "(":
-        setValuesArr(addOpenParanthesis(valuesArr, e.key));
+        setValuesArr(addOpenParanthesis(valuesArr));
         break;
       case ")":
-        setValuesArr(addClosingParanthesis(valuesArr, e.key));
+        setValuesArr(addClosingParanthesis(valuesArr));
         break;
       default:
         if (e.key.match(/^[0-9a-z+\-*.^!]$/))

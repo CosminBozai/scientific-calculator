@@ -1,6 +1,7 @@
 import "./styles/App.scss";
 import { MathJaxContext } from "better-react-mathjax";
 import Input from "./components/Input";
+import MainKeyboard from "./components/MainKeyboard";
 
 //TODO: Make the keyboard functional again
 
@@ -23,7 +24,9 @@ function App() {
   return (
     <MathJaxContext version={3} config={mathjaxConfig}>
       <Input />
-      <section id="keyboard-section">{/* <MainKeyboard/> */}</section>
+      <section id="keyboard-section">
+        <MainKeyboard />
+      </section>
     </MathJaxContext>
   );
 }
