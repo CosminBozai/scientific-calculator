@@ -8,7 +8,7 @@ export function getCustomError(value: string): string {
       return "Factorial operators can't be the first element";
     case /^\^/.test(value):
       return "You need a value before the exponent sign";
-    case /abs|cos|sin|tan|sqrt/.test(value):
+    case /abs\s|abs$|cos\s|cos$|sin\s|sin$|tan\s|tan$|sqrt\s|sqrt$/.test(value):
       return "Functions require arguments. For example: abs(-2)";
     default:
       return "Could not evaluate expression";
