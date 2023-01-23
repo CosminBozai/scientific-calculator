@@ -7,6 +7,10 @@ import {
 } from "../utils/cursorControls";
 import "../styles/Input.scss";
 import Result from "./Result";
+import {
+  addClosingParanthesis,
+  addOpenParanthesis,
+} from "../utils/specialCharsHandler";
 
 function Input() {
   // makes cursor blink
@@ -53,8 +57,14 @@ function Input() {
         const newState = [...valuesArr, e.key];
         setValuesArr(moveCursorRight(newState));
         break;
+      case "(":
+        setValuesArr(addOpenParanthesis(valuesArr, e.key));
+        break;
+      case ")":
+        setValuesArr(addClosingParanthesis(valuesArr, e.key));
+        break;
       default:
-        if (e.key.match(/^[0-9a-z+\-*/().^!]$/))
+        if (e.key.match(/^[0-9a-z+\-*.^!]$/))
           setValuesArr(addCharAtCursor(valuesArr, e.key));
         break;
     }

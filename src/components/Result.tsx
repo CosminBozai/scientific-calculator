@@ -19,7 +19,9 @@ function Result({ valuesArr }: arrayToEval) {
     const toEvaluate = filtered.join("");
     try {
       const result: number = math.evaluate(toEvaluate);
-      String(result) === "undefined"
+      // check for result length because when typing a function, eg. "abs"...
+      //... eval would return a very long string
+      String(result) === "undefined" || String(result).length > 30
         ? setResult("")
         : setResult(String(result));
     } catch (err) {
