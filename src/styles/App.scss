@@ -1,4 +1,17 @@
 #calculator-body {
   width: 100vw;
   height: 100vh;
+  border: 1px solid rgb(191, 191, 191);
+}
+
+@media (min-width: 650px) {
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #calculator-body {
+    width: 624px;
+    height: 650px;
+  }
 }
