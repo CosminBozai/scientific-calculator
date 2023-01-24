@@ -2,9 +2,22 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 600px;
   border: 1px solid black;
   padding: 0.25rem 0.25rem;
+  background-color: rgb(232, 232, 232);
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 2.5rem;
+    background-color: white;
+    border: 1px solid lightgray;
+    span {
+      display: flex !important; // to overwrite matjax inline styling
+    }
+  }
 }
 
 #left,
@@ -39,8 +52,4 @@
     width: 100%;
     grid-area: 4 / 1 / 5 / 3;
   }
-}
-
-button {
-  padding: 0.5rem 0.75rem;
 }
