@@ -10,10 +10,21 @@ import {
   addSqrtFunc,
   addTanFunc,
 } from "../utils/specialCharsHandler";
-import { addCharAtCursor, deleteCharAtCursor } from "../utils/cursorControls";
+import {
+  addCharAtCursor,
+  deleteCharAtCursor,
+  moveCursorRight,
+  moveCursorLeft,
+} from "../utils/cursorControls";
+
+//TODO: add logic for a^2, a^b and the other buttons
+//TODO: add clear button
 
 function MainKeyboard() {
   const [valuesArr, setValuesArr] = useAtom(valuesArrAtom);
+  const clearInput = () => {
+    setValuesArr(() => ["cursor"]);
+  };
   return (
     <div id="main-keyboard">
       <div id="left">
@@ -93,10 +104,11 @@ function MainKeyboard() {
         </button>
       </div>
       <div id="right">
-        <button>bbb</button>
-        <button>bbb</button>
-        <button>bbb</button>
-        <button>bbb</button>
+        <button onClick={() => moveCursorLeft(valuesArr)}>left</button>
+        <button onClick={() => moveCursorRight(valuesArr)}>right</button>
+        <button className="clear" onClick={clearInput}>
+          clear
+        </button>
         <button
           className="backspace"
           onClick={() => setValuesArr(deleteCharAtCursor(valuesArr))}
