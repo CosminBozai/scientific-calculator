@@ -4,6 +4,7 @@ import Input from "./components/Input";
 import MainKeyboard from "./components/MainKeyboard";
 import { atom, useAtom } from "jotai";
 import React, { useState } from "react";
+import Screen from "./components/Screen";
 
 //TODO: Make the keyboard functional again
 
@@ -36,10 +37,10 @@ function App() {
   return (
     <div onClick={handleFocus}>
       <MathJaxContext version={3} config={mathjaxConfig}>
-        <Input hasFocus={hasFocus} />
-        <section id="keyboard-section">
+        <div id="calculator-body">
+          <Screen hasFocus={hasFocus} />
           <MainKeyboard />
-        </section>
+        </div>
       </MathJaxContext>
     </div>
   );

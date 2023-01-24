@@ -66,7 +66,7 @@ function MainKeyboard() {
           9
         </span>
         <span onClick={() => setValuesArr(addCharAtCursor(valuesArr, "/"))}>
-          /
+          <MathJax>{`\\(\\div\\)`}</MathJax>
         </span>
         <span onClick={() => setValuesArr(addCharAtCursor(valuesArr, "4"))}>
           4
