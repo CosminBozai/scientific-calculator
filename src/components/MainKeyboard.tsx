@@ -28,96 +28,105 @@ function MainKeyboard() {
   return (
     <div id="main-keyboard">
       <div id="left">
-        <span onClick={() => setValuesArr(addSquareFunc(valuesArr))}>
+        <button onClick={() => setValuesArr(addSquareFunc(valuesArr))}>
           <MathJax>{`\\(\a^{2}\\)`}</MathJax>
-        </span>
-        <span onClick={() => setValuesArr(addQuantifyFunc(valuesArr))}>
+        </button>
+        <button onClick={() => setValuesArr(addQuantifyFunc(valuesArr))}>
           <MathJax>{`\\(\a^{b}\\)`}</MathJax>
-        </span>
-        <span onClick={() => setValuesArr(addAbsFunc(valuesArr))}>abs</span>
-        <span onClick={() => setValuesArr(addSquarerootFunc(valuesArr))}>
+        </button>
+        <button onClick={() => setValuesArr(addAbsFunc(valuesArr))}>abs</button>
+        <button onClick={() => setValuesArr(addSquarerootFunc(valuesArr))}>
           <MathJax>{`\\(\\sqrt{}\\)`}</MathJax>
-        </span>
-        <span onClick={() => setValuesArr(addRootFunc(valuesArr))}>
+        </button>
+        <button onClick={() => setValuesArr(addRootFunc(valuesArr))}>
           <MathJax>{`\\(\\sqrt[n]{}\\)`}</MathJax>
-        </span>
-        <span onClick={() => setValuesArr(addCharAtCursor(valuesArr, "pi"))}>
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "pi"))}>
           <MathJax>{`\\(\\pi\\)`}</MathJax>
-        </span>
-        <span onClick={() => setValuesArr(addSinFunc(valuesArr))}>sin</span>
-        <span onClick={() => setValuesArr(addCosFunc(valuesArr))}>cos</span>
-        <span onClick={() => setValuesArr(addTanFunc(valuesArr))}>tan</span>
-        <span onClick={() => setValuesArr(addOpenParanthesis(valuesArr))}>
+        </button>
+        <button onClick={() => setValuesArr(addSinFunc(valuesArr))}>sin</button>
+        <button onClick={() => setValuesArr(addCosFunc(valuesArr))}>cos</button>
+        <button onClick={() => setValuesArr(addTanFunc(valuesArr))}>tan</button>
+        <button onClick={() => setValuesArr(addOpenParanthesis(valuesArr))}>
           {"("}
-        </span>
-        <span>{")"}</span>
-        <span onClick={() => setValuesArr(addCharAtCursor(valuesArr, "!"))}>
+        </button>
+        <button>{")"}</button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "!"))}>
           !
-        </span>
+        </button>
       </div>
       <div id="center">
-        <span onClick={() => setValuesArr(addCharAtCursor(valuesArr, "7"))}>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "7"))}>
           7
-        </span>
-        <span onClick={() => setValuesArr(addCharAtCursor(valuesArr, "8"))}>
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "8"))}>
           8
-        </span>
-        <span onClick={() => setValuesArr(addCharAtCursor(valuesArr, "9"))}>
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "9"))}>
           9
-        </span>
-        <span onClick={() => setValuesArr(addCharAtCursor(valuesArr, "/"))}>
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "/"))}>
           <MathJax>{`\\(\\div\\)`}</MathJax>
-        </span>
-        <span onClick={() => setValuesArr(addCharAtCursor(valuesArr, "4"))}>
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "4"))}>
           4
-        </span>
-        <span onClick={() => setValuesArr(addCharAtCursor(valuesArr, "5"))}>
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "5"))}>
           5
-        </span>
-        <span onClick={() => setValuesArr(addCharAtCursor(valuesArr, "6"))}>
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "6"))}>
           6
-        </span>
-        <span onClick={() => setValuesArr(addCharAtCursor(valuesArr, "*"))}>
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "*"))}>
           x
-        </span>
-        <span onClick={() => setValuesArr(addCharAtCursor(valuesArr, "1"))}>
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "1"))}>
           1
-        </span>
-        <span onClick={() => setValuesArr(addCharAtCursor(valuesArr, "2"))}>
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "2"))}>
           2
-        </span>
-        <span onClick={() => setValuesArr(addCharAtCursor(valuesArr, "3"))}>
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "3"))}>
           3
-        </span>
-        <span onClick={() => setValuesArr(addCharAtCursor(valuesArr, "-"))}>
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "-"))}>
           -
-        </span>
-        <span onClick={() => setValuesArr(addCharAtCursor(valuesArr, "0"))}>
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "0"))}>
           0
-        </span>
-        <span onClick={() => setValuesArr(addCharAtCursor(valuesArr, "."))}>
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "."))}>
           .
-        </span>
-        <span onClick={() => setValuesArr(addCharAtCursor(valuesArr, "%"))}>
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "%"))}>
           %
-        </span>
-        <span onClick={() => setValuesArr(addCharAtCursor(valuesArr, "+"))}>
+        </button>
+        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "+"))}>
           +
-        </span>
+        </button>
       </div>
       <div id="right">
-        <span onClick={() => moveCursorLeft(valuesArr)}>left</span>
-        <span onClick={() => moveCursorRight(valuesArr)}>right</span>
-        <span className="clear" onClick={clearInput}>
+        <button onClick={() => moveCursorLeft(valuesArr)}>left</button>
+        <button onClick={() => moveCursorRight(valuesArr)}>right</button>
+        <button className="clear" onClick={clearInput}>
           clear
-        </span>
-        <span
+        </button>
+        <button
           className="backspace"
           onClick={() => setValuesArr(deleteCharAtCursor(valuesArr))}
         >
           back
-        </span>
-        <span className="enter">enter</span>
+        </button>
+        <button className="enter">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill=""
+            height="48"
+            width="48"
+          >
+            <path d="M18 36 6.05 24.05 18 12.1l2.15 2.15-8.35 8.35H39V14h3v11.55H11.85l8.3 8.3Z" />
+          </svg>
+        </button>
       </div>
     </div>
   );

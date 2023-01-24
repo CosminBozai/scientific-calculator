@@ -1,23 +1,13 @@
+@import "colors";
+
 #main-keyboard {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   height: 30%;
-  padding: 0.25rem 0.25rem;
+  padding: 0 0.5rem;
   background-color: rgb(232, 232, 232);
-  span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 3.75rem;
-    height: 2.5rem;
-    background-color: white;
-    border: 1px solid lightgray;
-    span {
-      display: flex !important; // to overwrite matjax inline styling
-    }
-  }
 }
 
 #left,
@@ -51,5 +41,38 @@
   .enter {
     width: 100%;
     grid-area: 4 / 1 / 5 / 3;
+    background-color: $blue;
+    color: white;
+    &:hover {
+      background-color: darken($blue, 10%);
+    }
+    &:active {
+      background-color: darken($blue, 15%);
+    }
+    svg {
+      fill: white;
+      transform: scale(0.7);
+    }
+  }
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.75rem;
+  height: 2.5rem;
+  background-color: white;
+  border: 1px solid lightgray;
+  font-size: 1rem;
+  cursor: pointer;
+  &:hover {
+    background-color: darken(white, 10%);
+  }
+  &:active {
+    background-color: darken(white, 15%);
+  }
+  span {
+    display: flex !important; // to overwrite matjax inline styling
   }
 }
