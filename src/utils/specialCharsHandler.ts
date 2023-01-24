@@ -45,10 +45,40 @@ export function addTanFunc(arr: string[]): string[] {
   return arr;
 }
 
-export function addSqrtFunc(arr: string[]): string[] {
+export function addSquarerootFunc(arr: string[]): string[] {
   const cursorPos = arr.indexOf("cursor");
   const nextChars = arr.splice(cursorPos);
-  arr.push("sqrt");
-  arr = [...arr, ...addOpenParanthesis(nextChars)];
+  arr = [...arr, "sqrt", ...addOpenParanthesis(nextChars)];
+  return arr;
+}
+
+export function addRootFunc(arr: string[]): string[] {
+  const cursorPos = arr.indexOf("cursor");
+  const nextChars = arr.splice(cursorPos);
+  arr = [...arr, "3sqrt", ...addOpenParanthesis(nextChars)];
+  return arr;
+}
+
+export function addSquareFunc(arr: string[]): string[] {
+  const cursorPos = arr.indexOf("cursor");
+  if (arr[cursorPos - 1] == undefined || arr[cursorPos - 1] === " ") {
+    const nextChars = arr.splice(cursorPos);
+    arr = [...arr, "2", "^", "2", ...nextChars];
+  } else {
+    const nextChars = arr.splice(cursorPos);
+    arr = [...arr, "^", "2", ...nextChars];
+  }
+  return arr;
+}
+
+export function addQuantifyFunc(arr: string[]): string[] {
+  const cursorPos = arr.indexOf("cursor");
+  if (arr[cursorPos - 1] == undefined || arr[cursorPos - 1] === " ") {
+    const nextChars = arr.splice(cursorPos);
+    arr = [...arr, "2", "^", ...nextChars];
+  } else {
+    const nextChars = arr.splice(cursorPos);
+    arr = [...arr, "^", ...nextChars];
+  }
   return arr;
 }
