@@ -80,6 +80,7 @@ function Input({ hasFocus }: Focus) {
       <div
         onKeyDown={handleKeyPress}
         className={`input ${hasFocus ? "focus" : ""}`}
+        tabIndex={0}
       >
         {inputElements}
       </div>
