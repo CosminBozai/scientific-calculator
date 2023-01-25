@@ -52,16 +52,21 @@ function Input({ hasFocus }: Focus) {
         setValuesArr(deleteCharAtCursor(valuesArr));
         break;
       case "Enter":
-        const filtered = valuesArr.filter(
-          (char) => char !== " " && char !== "cursor"
-        );
-        const value = filtered.join("");
-        const result = document.querySelector(".result-output.main")?.innerHTML;
-        setPastValues((prev) => [
-          ...prev,
-          { values: value, result: result || "error" },
-        ]);
-        setValuesArr(() => ["cursor"]);
+        if (valuesArr.length > 1) {
+          const filtered = valuesArr.filter(
+            (char) => char !== " " && char !== "cursor"
+          );
+          const value = filtered.join("");
+          const result = document.querySelector(
+            ".result-output.main"
+          )?.innerHTML;
+          setPastValues((prev) => [
+            ...prev,
+            { values: value, result: result || "error" },
+          ]);
+          setValuesArr(() => ["cursor"]);
+        }
+
         break;
       // FIXME: try finding a way to make moving the arrow faster
       case "ArrowRight":

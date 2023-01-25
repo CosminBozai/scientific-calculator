@@ -16,8 +16,8 @@ export const pastValuesAtom = atom<pastValues[]>([]);
 
 function Screen({ hasFocus }: Focus) {
   const [pastInputs] = useAtom(pastValuesAtom);
-  const getPastInputs = pastInputs.map((item) => (
-    <PastInput values={item.values} result={item.result} />
+  const getPastInputs = pastInputs.map((item, i) => (
+    <PastInput key={i} values={item.values} result={item.result} />
   ));
   return (
     <div id="screen">

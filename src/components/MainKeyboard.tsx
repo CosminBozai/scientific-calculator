@@ -23,7 +23,7 @@ import { pastValuesAtom } from "./Screen";
 
 function MainKeyboard() {
   const [valuesArr, setValuesArr] = useAtom(valuesArrAtom);
-  const [, setPastValues] = useAtom(pastValuesAtom);
+  const [pastValues, setPastValues] = useAtom(pastValuesAtom);
 
   const clearInput = () => {
     valuesArr.length > 1
@@ -31,16 +31,25 @@ function MainKeyboard() {
       : setPastValues(() => []);
   };
   const handleReturn = () => {
-    const filtered = valuesArr.filter(
-      (char) => char !== " " && char !== "cursor"
-    );
-    const value = filtered.join("");
-    const result = document.querySelector(".result-output.main")?.innerHTML;
-    setPastValues((prev) => [
-      ...prev,
-      { values: value, result: result || "error" },
-    ]);
-    setValuesArr(() => ["cursor"]);
+    if (valuesArr.length > 1) {
+      const filtered = valuesArr.filter(
+        (char) => char !== " " && char !== "cursor"
+      );
+      const value = filtered.join("");
+      const result = document.querySelector(".result-output.main")?.innerHTML;
+      setPastValues((prev) => [
+        ...prev,
+        { values: value, result: result || "error" },
+      ]);
+      setValuesArr(() => ["cursor"]);
+    }
+  };
+
+  const undoReturn = () => {
+    if (pastValues.length > 0) {
+      setValuesArr(Array.from(pastValues[pastValues.length - 1].values));
+      setPastValues(pastValues.slice(0, -1));
+    }
   };
   return (
     <div id="main-keyboard">
@@ -133,9 +142,10 @@ function MainKeyboard() {
             <path d="m18.75 36-2.15-2.15 9.9-9.9-9.9-9.9 2.15-2.15L30.8 23.95Z" />
           </svg>
         </button>
-        <button className="clear" onClick={clearInput}>
+        <button onClick={clearInput}>
           {valuesArr.length > 1 ? "clear" : "clear all"}
         </button>
+        <button onClick={undoReturn}>undo</button>
         <button
           className="backspace"
           onClick={() => setValuesArr(deleteCharAtCursor(valuesArr))}
