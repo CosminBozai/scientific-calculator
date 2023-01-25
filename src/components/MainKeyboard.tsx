@@ -26,7 +26,9 @@ function MainKeyboard() {
   const [, setPastValues] = useAtom(pastValuesAtom);
 
   const clearInput = () => {
-    setValuesArr(() => ["cursor"]);
+    valuesArr.length > 1
+      ? setValuesArr(() => ["cursor"])
+      : setPastValues(() => []);
   };
   const handleReturn = () => {
     const filtered = valuesArr.filter(
@@ -132,7 +134,7 @@ function MainKeyboard() {
           </svg>
         </button>
         <button className="clear" onClick={clearInput}>
-          clear
+          {valuesArr.length > 1 ? "clear" : "clear all"}
         </button>
         <button
           className="backspace"
