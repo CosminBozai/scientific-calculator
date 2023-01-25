@@ -27,7 +27,7 @@ function App() {
   const [hasFocus, setHasFocus] = useState(false);
   const handleFocus = (e: React.MouseEvent) => {
     const keyboard = document.querySelector("#main-keyboard");
-    const input = document.querySelector(".input");
+    const input = document.querySelector(".input.main");
     const target = e.target as HTMLElement;
     keyboard?.contains(target) || target === input
       ? setHasFocus(true)

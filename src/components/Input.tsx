@@ -12,6 +12,7 @@ import {
   addOpenParanthesis,
 } from "../utils/specialCharsHandler";
 import { useAtom, atom } from "jotai";
+import { pastValuesAtom } from "./Screen";
 
 export const valuesArrAtom = atom<string[]>(["cursor"]);
 
@@ -21,6 +22,7 @@ interface Focus {
 
 function Input({ hasFocus }: Focus) {
   const [valuesArr, setValuesArr] = useAtom(valuesArrAtom);
+  const [, setPastValues] = useAtom(pastValuesAtom);
   // makes cursor blink
   const [blink, setBlink] = useState("");
   useEffect(() => {
@@ -48,6 +50,18 @@ function Input({ hasFocus }: Focus) {
     switch (e.key) {
       case "Backspace":
         setValuesArr(deleteCharAtCursor(valuesArr));
+        break;
+      case "Enter":
+        const filtered = valuesArr.filter(
+          (char) => char !== " " && char !== "cursor"
+        );
+        const value = filtered.join("");
+        const result = document.querySelector(".result-output.main")?.innerHTML;
+        setPastValues((prev) => [
+          ...prev,
+          { values: value, result: result || "error" },
+        ]);
+        setValuesArr(() => ["cursor"]);
         break;
       // FIXME: try finding a way to make moving the arrow faster
       case "ArrowRight":
@@ -79,7 +93,7 @@ function Input({ hasFocus }: Focus) {
     <div className="input-wrapper">
       <div
         onKeyDown={handleKeyPress}
-        className={`input ${hasFocus ? "focus" : ""}`}
+        className={`input main ${hasFocus ? "focus" : ""}`}
         tabIndex={0}
       >
         {inputElements}

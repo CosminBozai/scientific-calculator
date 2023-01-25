@@ -2,7 +2,6 @@ import * as math from "mathjs";
 import { useEffect, useState } from "react";
 import { getCustomError } from "../utils/checks";
 import "../styles/Result.scss";
-import errorSvg from "../assets/error.svg";
 
 interface arrayToEval {
   valuesArr: string[];
@@ -50,7 +49,7 @@ function Result({ valuesArr }: arrayToEval) {
       </div>
     );
   } else {
-    return <div className="result-output">{result}</div>;
+    return <div className="result-output main">{result}</div>;
   }
 }
 
