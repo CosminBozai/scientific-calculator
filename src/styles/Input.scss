@@ -18,20 +18,16 @@
   width: 100%;
   outline: none;
   padding: 0 0.75rem;
-  height: 100%;
   &.focus {
     border: 1px solid $blue;
     box-shadow: inset 0px 0px 0px 0.5px $blue;
     .cursor {
+      border-right: 2px solid rgb(69, 69, 69);
       opacity: 0;
+      height: 1.25rem;
     }
     .blink {
       opacity: 1;
     }
   }
-}
-
-.cursor {
-  border-right: 2px solid rgb(69, 69, 69);
-  opacity: 0;
 }
