@@ -9,15 +9,6 @@ The app evaluates and displays the result as the user is inputing the values.
 
 ### Custom error
 If an error occurs, instead of a result the user will get an error message describing the problem.
-<picture> <img alt="YOUR-ALT-TEXT" src="https://imgur.com/wBfX8iy">
-</picture>
-<picture> <img alt="YOUR-ALT-TEXT" src="https://imgur.com/P5h1tLJ">
-</picture>
-<picture> <img alt="YOUR-ALT-TEXT" src="https://imgur.com/qViQnrf">
-</picture>
-<picture> <img alt="YOUR-ALT-TEXT" src="https://imgur.com/mAtKAGW">
-</picture>
-
 
 ### Past calcualtions storage
 The calculator stores and displays the past calculations made by the user.
