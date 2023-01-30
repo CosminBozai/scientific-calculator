@@ -84,46 +84,79 @@ function MainKeyboard() {
         </button>
       </div>
       <div id="center">
-        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "7"))}>
+        <button
+          className="digit"
+          onClick={() => setValuesArr(addCharAtCursor(valuesArr, "7"))}
+        >
           7
         </button>
-        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "8"))}>
+        <button
+          className="digit"
+          onClick={() => setValuesArr(addCharAtCursor(valuesArr, "8"))}
+        >
           8
         </button>
-        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "9"))}>
+        <button
+          className="digit"
+          onClick={() => setValuesArr(addCharAtCursor(valuesArr, "9"))}
+        >
           9
         </button>
         <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "/"))}>
           <MathJax>{`\\(\\div\\)`}</MathJax>
         </button>
-        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "4"))}>
+        <button
+          className="digit"
+          onClick={() => setValuesArr(addCharAtCursor(valuesArr, "4"))}
+        >
           4
         </button>
-        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "5"))}>
+        <button
+          className="digit"
+          onClick={() => setValuesArr(addCharAtCursor(valuesArr, "5"))}
+        >
           5
         </button>
-        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "6"))}>
+        <button
+          className="digit"
+          onClick={() => setValuesArr(addCharAtCursor(valuesArr, "6"))}
+        >
           6
         </button>
         <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "*"))}>
           x
         </button>
-        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "1"))}>
+        <button
+          className="digit"
+          onClick={() => setValuesArr(addCharAtCursor(valuesArr, "1"))}
+        >
           1
         </button>
-        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "2"))}>
+        <button
+          className="digit"
+          onClick={() => setValuesArr(addCharAtCursor(valuesArr, "2"))}
+        >
           2
         </button>
-        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "3"))}>
+        <button
+          className="digit"
+          onClick={() => setValuesArr(addCharAtCursor(valuesArr, "3"))}
+        >
           3
         </button>
         <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "-"))}>
           -
         </button>
-        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "0"))}>
+        <button
+          className="digit"
+          onClick={() => setValuesArr(addCharAtCursor(valuesArr, "0"))}
+        >
           0
         </button>
-        <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "."))}>
+        <button
+          className="digit"
+          onClick={() => setValuesArr(addCharAtCursor(valuesArr, "."))}
+        >
           .
         </button>
         <button onClick={() => setValuesArr(addCharAtCursor(valuesArr, "%"))}>
