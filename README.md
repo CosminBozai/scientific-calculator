@@ -2,6 +2,31 @@
 
 Scientific calulator I made for my web developer project portofolio. 
 
+## Features:
+
+### Dynamic result evaluation
+The app evaluates and displays the result as the user is inputing the values. 
+
+### Custom error
+If an error occurs, instead of a result the user will get an error message describing the problem.
+<picture> <img alt="YOUR-ALT-TEXT" src="https://imgur.com/wBfX8iy">
+</picture>
+<picture> <img alt="YOUR-ALT-TEXT" src="https://imgur.com/P5h1tLJ">
+</picture>
+<picture> <img alt="YOUR-ALT-TEXT" src="https://imgur.com/qViQnrf">
+</picture>
+<picture> <img alt="YOUR-ALT-TEXT" src="https://imgur.com/mAtKAGW">
+</picture>
+
+
+### Past calcualtions storage
+The calculator stores and displays the past calculations made by the user.
+
+### Undo functionality
+The user can undo the calculations made.
+
+### Responsive design
+
 ## Main dependencies that the calculator uses: 
 
 ### 1. Typescript
@@ -19,20 +44,3 @@ I use Jotai for global state management as it's a very lightweight and easy to u
 ### Other dependencies: 
 - Vite
 - better-react-mathjax
-
-## Features:
-
-### Dynamic result evaluation
-The app evaluates and displays the result as the user is inputing the values. 
-
-### Custom error
-If an error occurs, instead of a result the user will get an error message describing the problem.
-
-### Past calcualtions storage
-The calculator stores and displays the past calculations made by the user.
-
-### Undo functionality
-The user can undo the calculations made.
-
-### Responsive design
-
