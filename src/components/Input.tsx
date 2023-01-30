@@ -88,7 +88,7 @@ function Input({ hasFocus }: Focus) {
         setValuesArr(addClosingParanthesis(valuesArr));
         break;
       default:
-        if (e.key.match(/^[0-9a-z+\-*.^!]$/))
+        if (e.key.match(/^[0-9a-z+\-*.^!/]$/))
           setValuesArr(addCharAtCursor(valuesArr, e.key));
         break;
     }
