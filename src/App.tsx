@@ -1,12 +1,8 @@
 import "./styles/App.scss";
 import { MathJaxContext } from "better-react-mathjax";
-import Input from "./components/Input";
 import MainKeyboard from "./components/MainKeyboard";
-import { atom, useAtom } from "jotai";
 import React, { useState } from "react";
 import Screen from "./components/Screen";
-
-//TODO: Make the keyboard functional again
 
 const mathjaxConfig = {
   loader: { load: ["[tex]/html"] },
@@ -29,6 +25,7 @@ function App() {
     const keyboard = document.querySelector("#main-keyboard");
     const input = document.querySelector(".input.main");
     const target = e.target as HTMLElement;
+    console.log(target);
     keyboard?.contains(target) || target === input
       ? setHasFocus(true)
       : setHasFocus(false);

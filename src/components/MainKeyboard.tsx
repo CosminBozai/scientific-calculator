@@ -21,6 +21,8 @@ import {
 } from "../utils/cursorControls";
 import { pastValuesAtom } from "./Screen";
 
+//FIXME: Find a way to keep the button from getting focus when pressed
+
 function MainKeyboard() {
   const [valuesArr, setValuesArr] = useAtom(valuesArrAtom);
   const [pastValues, setPastValues] = useAtom(pastValuesAtom);

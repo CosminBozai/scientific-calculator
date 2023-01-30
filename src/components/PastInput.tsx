@@ -1,17 +1,4 @@
-import { useEffect, useState } from "react";
-import {
-  addCharAtCursor,
-  deleteCharAtCursor,
-  moveCursorLeft,
-  moveCursorRight,
-} from "../utils/cursorControls";
-import "../styles/Input.scss";
-import Result from "./Result";
-import {
-  addClosingParanthesis,
-  addOpenParanthesis,
-} from "../utils/specialCharsHandler";
-import { useAtom, atom } from "jotai";
+import { atom } from "jotai";
 
 export const valuesArrAtom = atom<string[]>(["cursor"]);
 
